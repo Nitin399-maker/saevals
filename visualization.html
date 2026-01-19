@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation Comparison</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f5f5f5; }
+        .meta-analysis { border-left: 4px solid #4CAF50; }
+        .insights li { padding-left: 1.5rem; position: relative; }
+        .insights li:before { content: "▸"; position: absolute; left: 0; color: #4CAF50; font-weight: bold; }
+        th { background: #2c3e50; position: sticky; top: 0; z-index: 10; }
+        th.question-header { background: #34495e; min-width: 250px; }
+        .score-cell { cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .score-cell:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 5; }
+        .modal-header { background: #2c3e50; color: white; border-bottom: 3px solid #4CAF50; }
+        .modal-header .subtitle { color: #bdc3c7; }
+        .baseline-text { border-left: 4px solid #3498db; }
+        .model-answer { border-left: 4px solid #ffc107; }
+        .criteria-table th { background: #34495e; }
+        .overall-score-display { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .overall-score-display .score-number { font-size: 48px; font-weight: bold; margin-bottom: 5px; }
+        .legend-color { width: 40px; height: 20px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal.show { animation: fadeIn 0.2s; }
+        .modal-content { animation: slideIn 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <div class="bg-white p-4 rounded shadow-sm">
+            <h1 class="mb-2">Singapore Auntie Model Evaluation</h1>
+            <p class="text-muted mb-4 small">Comparative analysis across multiple LLM models</p>
+
+            <!-- Meta Analysis Section -->
+            <div class="meta-analysis bg-light p-3 rounded mb-4">
+                <h2 class="h5 mb-3">📊 Key Insights</h2>
+                <ul class="insights list-unstyled" id="insights"></ul>
+            </div>
+
+            <!-- Legend -->
+            <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mb-3 p-3 bg-light rounded">
+                <span class="fw-bold text-dark">Score Scale:</span>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="legend-color rounded" style="background: #d32f2f;"></div>
+                    <small class="text-muted">Low (0-7)</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="legend-color rounded" style="background: #f57c00;"></div>
+                    <small class="text-muted">Fair (8-11)</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="legend-color rounded" style="background: #fbc02d;"></div>
+                    <small class="text-muted">Good (12-14)</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="legend-color rounded" style="background: #7cb342;"></div>
+                    <small class="text-muted">Very Good (15-17)</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="legend-color rounded" style="background: #388e3c;"></div>
+                    <small class="text-muted">Excellent (18-20)</small>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm small" id="comparisonTable"></table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="modalTitle">Question Details</h5>
+                        <small class="subtitle d-block" id="modalSubtitle">Model evaluation</small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const state = { data: null, currentCell: { row: 0, col: 0 }, tableStructure: [], modal: null };
+        const colors = ['#d32f2f', '#f57c00', '#fbc02d', '#7cb342', '#388e3c'];
+        
+        const getScoreColor = (score, maxScore) => {
+            const percentage = score / maxScore;
+            if (percentage < 0.4) return colors[0]; // 0-7 (0-39%)
+            if (percentage < 0.6) return colors[1]; // 8-11 (40-59%)
+            if (percentage < 0.75) return colors[2]; // 12-14 (60-74%)
+            if (percentage < 0.9) return colors[3]; // 15-17 (75-89%)
+            return colors[4]; // 18-20 (90-100%)
+        };
+        const getMaxScore = (eval) => eval.question_id.match(/^Q[1-5]$/) 
+            ? (eval.question_id === 'Q4' && eval.model === 'Claude Opus 4.5' ? 15 : 20)
+            : (eval.question_id.match(/^Q[1-3]$/) && eval.model === 'GPT-5.2' ? 15 : 20);
+
+        fetch('evaluations.json')
+            .then(res => res.json())
+            .then(data => {
+                state.data = data;
+                state.modal = new bootstrap.Modal('#detailModal');
+                initializeTable();
+                generateInsights();
+            })
+            .catch(err => console.error('Error:', err));
+
+        function initializeTable() {
+            const questionMap = new Map();
+            const models = [...new Set(state.data.evaluations.map(e => e.model))];
+            
+            state.data.evaluations.forEach(e => {
+                const key = `${e.question_id}::${e.question_text}`;
+                if (!questionMap.has(key)) questionMap.set(key, { id: e.question_id, text: e.question_text, key });
+            });
+
+            const questions = Array.from(questionMap.values());
+            state.tableStructure = questions.map(q => ({
+                questionId: q.id,
+                questionText: q.text,
+                questionKey: q.key,
+                cells: models.map(m => state.data.evaluations.find(e => e.model === m && e.question_id === q.id && e.question_text === q.text) || null)
+            }));
+
+            const thead = `<thead class="text-white"><tr><th class="question-header text-start">Question</th>${models.map(m => `<th>${m}</th>`).join('')}</tr></thead>`;
+            const tbody = state.tableStructure.map((row, ri) => `
+                <tr>
+                    <td class="question-cell fw-medium bg-light text-dark text-start">${row.questionId}: ${row.questionText}</td>
+                    ${row.cells.map((cell, ci) => {
+                        if (!cell) return '<td class="bg-light text-muted">N/A</td>';
+                        const score = cell.overall_score_1_to_20 || cell.overall_score_1_to_15;
+                        const maxScore = getMaxScore(cell);
+                        return `<td class="score-cell" style="background:${getScoreColor(score, maxScore)}" onclick="openModal(${ri},${ci})">${score}/${maxScore}</td>`;
+                    }).join('')}
+                </tr>
+            `).join('');
+
+            document.getElementById('comparisonTable').innerHTML = thead + '<tbody>' + tbody + '</tbody>';
+        }
+
+        function openModal(rowIndex, colIndex) {
+            state.currentCell = { row: rowIndex, col: colIndex };
+            showModalContent(rowIndex, colIndex);
+            state.modal.show();
+        }
+
+        function showModalContent(ri, ci) {
+            const row = state.tableStructure[ri];
+            const cell = row.cells[ci];
+            if (!cell) return;
+
+            const score = cell.overall_score_1_to_20 || cell.overall_score_1_to_15;
+            const maxScore = getMaxScore(cell);
+
+            document.getElementById('modalTitle').textContent = `${cell.question_id}: ${row.questionText}`;
+            document.getElementById('modalSubtitle').textContent = `Model: ${cell.model}`;
+
+            document.getElementById('modalBody').innerHTML = `
+                <div class="overall-score-display text-white text-center p-4 rounded mb-4">
+                    <div class="score-number">${score}/${maxScore}</div>
+                    <div class="score-label small">Overall Score</div>
+                </div>
+                <div class="mb-4">
+                    <h6 class="border-bottom border-success pb-2">📋 Transcript Baseline Summary</h6>
+                    <div class="baseline-text bg-light p-3 rounded">${cell.judge_comments}</div>
+                </div>
+                <div class="mb-4">
+                    <h6 class="border-bottom border-success pb-2">💬 Model Answer Summary</h6>
+                    <div class="model-answer bg-warning bg-opacity-25 p-3 rounded">${cell.model_answer}</div>
+                </div>
+                <div class="mb-4">
+                    <h6 class="border-bottom border-success pb-2">📊 Evaluation Criteria</h6>
+                    <table class="criteria-table table table-sm table-bordered">
+                        <thead class="text-white"><tr><th>Criterion</th><th class="text-center" style="width:80px">Score (1-5)</th><th>Evidence</th></tr></thead>
+                        <tbody>${cell.criteria.map(c => `
+                            <tr>
+                                <td><strong>${c.name}</strong></td>
+                                <td class="text-center fw-bold text-white" style="background:${getScoreColor(c.score_1_to_5, 5)}">${c.score_1_to_5}/5</td>
+                                <td class="small">${c.evidence}</td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                </div>
+                <div class="text-center text-muted small border-top pt-3">
+                    💡 Use <kbd class="bg-light border px-2 py-1 rounded">←</kbd> <kbd class="bg-light border px-2 py-1 rounded">→</kbd> arrow keys to navigate between models, 
+                    <kbd class="bg-light border px-2 py-1 rounded">↑</kbd> <kbd class="bg-light border px-2 py-1 rounded">↓</kbd> to navigate between questions, or <kbd class="bg-light border px-2 py-1 rounded">Esc</kbd> to close
+                </div>
+            `;
+        }
+
+        function navigateModal(dir) {
+            const { row, col } = state.currentCell;
+            const maxRows = state.tableStructure.length - 1;
+            const maxCols = state.tableStructure[0].cells.length - 1;
+            
+            const moves = { left: [row, Math.max(0, col - 1)], right: [row, Math.min(maxCols, col + 1)], 
+                           up: [Math.max(0, row - 1), col], down: [Math.min(maxRows, row + 1), col] };
+            
+            if (moves[dir]) {
+                state.currentCell = { row: moves[dir][0], col: moves[dir][1] };
+                showModalContent(state.currentCell.row, state.currentCell.col);
+            }
+        }
+
+        function generateInsights() {
+            const qScores = new Map(), mScores = new Map(), qDetails = new Map();
+            
+            state.data.evaluations.forEach(e => {
+                const score = (e.overall_score_1_to_20 || e.overall_score_1_to_15);
+                const normalized = (score / getMaxScore(e)) * 100;
+                const qKey = `${e.question_id}::${e.question_text}`;
+                
+                if (!qScores.has(qKey)) {
+                    qScores.set(qKey, []);
+                    qDetails.set(qKey, { id: e.question_id, text: e.question_text });
+                }
+                qScores.get(qKey).push(normalized);
+                mScores.set(e.model, [...(mScores.get(e.model) || []), normalized]);
+            });
+
+            const avg = arr => arr.reduce((a, b) => a + b) / arr.length;
+            const variance = (arr, mean) => arr.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / arr.length;
+            
+            // Find hardest question
+            let hardest = { avg: 100 };
+            qScores.forEach((scores, key) => {
+                const a = avg(scores);
+                if (a < hardest.avg) hardest = { avg: a, q: qDetails.get(key) };
+            });
+
+            // Find best/worst models
+            const modelAvgs = Array.from(mScores.entries()).map(([m, s]) => [m, avg(s)]).sort((a, b) => b[1] - a[1]);
+
+            // Find highest variance question
+            let maxVar = { variance: 0 };
+            qScores.forEach((scores, key) => {
+                const a = avg(scores);
+                const v = variance(scores, a);
+                if (v > maxVar.variance) maxVar = { variance: v, q: qDetails.get(key) };
+            });
+
+            document.getElementById('insights').innerHTML = [
+                `<strong>${hardest.q.id} (${hardest.q.text})</strong> is the most challenging question across all models, with an average score of <strong>${hardest.avg.toFixed(1)}%</strong>`,
+                `<strong>${modelAvgs[0][0]}</strong> performs best overall with an average score of <strong>${modelAvgs[0][1].toFixed(1)}%</strong>, while <strong>${modelAvgs[modelAvgs.length-1][0]}</strong> scores lowest at <strong>${modelAvgs[modelAvgs.length-1][1].toFixed(1)}%</strong>`,
+                `<strong>${maxVar.q.id} (${maxVar.q.text})</strong> shows the highest variance in model performance (σ²=${maxVar.variance.toFixed(1)}), indicating different models have very different capabilities for this question`
+            ].map(i => `<li>${i}</li>`).join('');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            const modalEl = document.getElementById('detailModal');
+            if (!modalEl.classList.contains('show')) return;
+            
+            const keys = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' };
+            if (keys[e.key]) {
+                navigateModal(keys[e.key]);
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

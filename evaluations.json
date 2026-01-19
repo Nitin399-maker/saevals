@@ -1,0 +1,886 @@
+{
+  "evaluations": [
+    {
+      "question_id": "Q1",
+      "question_text": "Favourite hawker centre",
+      "model": "Claude Opus 4.5",
+      "model_answer": "Picks Old Airport Road + dishes + auntie-style commentary.",
+      "judge_comments": "Transcript baseline: Mentions multiple popular hawker centres (Maxwell, Chinatown Complex, Old Airport Road) + specific famous stalls/dishes (Tian Tian chicken rice, lor mee, char kway teow) + why they're good.",
+      "criteria": [
+        {
+          "name": "Local specificity (real SG hawker centres + stalls/dishes)",
+          "score_1_to_5": 5,
+          "evidence": "Uses Old Airport Road + classic dishes (char kway teow, rojak, hokkien mee). Very aligned."
+        },
+        {
+          "name": "Coverage / richness (mentions variety like transcript does)",
+          "score_1_to_5": 3,
+          "evidence": "Transcript lists 3 centres + stall examples; Claude picks 1 centre only (still rich, but narrower)."
+        },
+        {
+          "name": "\"Auntie voice\" cultural realism",
+          "score_1_to_5": 5,
+          "evidence": "Strong Singlish + auntie vibe (\"aiyoh\", \"leh\", \"lah\", \"tsk tsk\")."
+        },
+        {
+          "name": "Practical plausibility (sounds like what an SG auntie would say)",
+          "score_1_to_5": 5,
+          "evidence": "Very plausible, includes price/portion complaint about \"fancy food court\"."
+        }
+      ],
+      "overall_score_1_to_20": 18
+    },
+    {
+      "question_id": "Q2",
+      "question_text": "Favourite country to visit with family",
+      "model": "Claude Opus 4.5",
+      "model_answer": "Japan #1; mentions Korea; includes family/grandkids angle; no Taiwan; no travel-cost nuance.",
+      "judge_comments": "Transcript baseline: Japan #1; also Korea + Taiwan; includes practical detail: transport can be expensive if not planned; mentions seasons/cleanliness.",
+      "criteria": [
+        {
+          "name": "Correct & culturally plausible choice set (Japan + nearby options)",
+          "score_1_to_5": 4,
+          "evidence": "Japan #1 matches; Korea mentioned; missing Taiwan."
+        },
+        {
+          "name": "Practical detail (pros/cons like transcript: cost/transport planning, season)",
+          "score_1_to_5": 2,
+          "evidence": "Mostly positives; lacks the \"transport expensive / planning\" realism from transcript."
+        },
+        {
+          "name": "Family framing (multi-gen family travel like transcript implies)",
+          "score_1_to_5": 4,
+          "evidence": "Mentions grandchildren + Disneyland, which fits family framing well."
+        },
+        {
+          "name": "\"Auntie voice\" cultural realism",
+          "score_1_to_5": 5,
+          "evidence": "Strong persona tone and Singlish consistent."
+        }
+      ],
+      "overall_score_1_to_20": 15
+    },
+    {
+      "question_id": "Q3",
+      "question_text": "Which neighbourhood has the best park",
+      "model": "Claude Opus 4.5",
+      "model_answer": "Declares East Coast Park best; mentions Bishan Park; gives weekend vibe, activities.",
+      "judge_comments": "Transcript baseline: Daily: \"nearest to our estate\" (practical, routine) + weekends: Sentosa side, East Coast Park, Botanic Gardens.",
+      "criteria": [
+        {
+          "name": "Practical auntie logic (near-home daily convenience)",
+          "score_1_to_5": 2,
+          "evidence": "Transcript emphasizes \"nearest estate\" for daily use; Claude skips that framing."
+        },
+        {
+          "name": "Local specificity (real parks/areas)",
+          "score_1_to_5": 4,
+          "evidence": "East Coast Park + Bishan Park are legit and relevant."
+        },
+        {
+          "name": "Use-case richness (daily vs weekend distinction, activities/equipment)",
+          "score_1_to_5": 3,
+          "evidence": "Claude gives activities (cycle, BBQ) but misses the \"daily near-home\" + exercise equipment detail."
+        },
+        {
+          "name": "\"Auntie voice\" cultural realism",
+          "score_1_to_5": 4,
+          "evidence": "Good tone, slightly less \"practical auntie\" than transcript."
+        }
+      ],
+      "overall_score_1_to_20": 13
+    },
+    {
+      "question_id": "Q4",
+      "question_text": "Prefer MRT or bus",
+      "model": "Claude Opus 4.5",
+      "model_answer": "Missing (it prints \"MRT or Bus\" but gives no answer).",
+      "judge_comments": "Transcript baseline: Aunties prefer bus: more spacious, cheaper, less crowded (as stated), practical reasoning.",
+      "criteria": [
+        {
+          "name": "Completeness (answers the question)",
+          "score_1_to_5": 1,
+          "evidence": "No MRT/bus preference provided."
+        },
+        {
+          "name": "Alignment with baseline preference + reasoning",
+          "score_1_to_5": 1,
+          "evidence": "Transcript provides clear stance (bus) + reasons; Claude provides none."
+        },
+        {
+          "name": "\"Auntie practicality\" (cost/space/crowd factors)",
+          "score_1_to_5": 1,
+          "evidence": "Not addressed."
+        }
+      ],
+      "overall_score_1_to_20": 3
+    },
+    {
+      "question_id": "Q5",
+      "question_text": "Health okay? Any new exercise",
+      "model": "Claude Opus 4.5",
+      "model_answer": "Health okay; tai chi 6am + walking + line dancing; playful scolding.",
+      "judge_comments": "Transcript baseline: Health okay; start exercising young; eat well/sleep well/don't stress; suggests tai chi/yoga/dance weekly/fortnightly.",
+      "criteria": [
+        {
+          "name": "Exercise specificity (tai chi/dance etc.)",
+          "score_1_to_5": 5,
+          "evidence": "Hits tai chi + dance strongly (very aligned)."
+        },
+        {
+          "name": "Holistic health advice (diet/sleep/stress like transcript)",
+          "score_1_to_5": 2,
+          "evidence": "Claude doesn't cover eat/sleep/stress much. Mostly exercise."
+        },
+        {
+          "name": "Persona warmth + auntie \"nagging\" realism",
+          "score_1_to_5": 5,
+          "evidence": "Very auntie-like caring + scold (\"don't always sit down play phone\")."
+        },
+        {
+          "name": "Practical plausibility (routine cadence)",
+          "score_1_to_5": 4,
+          "evidence": "6am tai chi + walking is plausible; good."
+        }
+      ],
+      "overall_score_1_to_20": 16
+    },
+    {
+      "question_id": "Q1",
+      "question_text": "What are your kids doing now?",
+      "model": "Gemini 3 Pro Preview",
+      "model_answer": "Very generic \"raising kids is hard, stress, hair drop\" + \"nice to see them grow up but headache\" + abruptly ends to go market / drink tea. Doesn't actually say what kids are doing now.",
+      "judge_comments": "Transcript baseline: Emphasis on (a) raising kids is never easy, (b) parent/mom always worried/concerned, (c) hopes kids grow up, become better people, settle down with family.",
+      "criteria": [
+        {
+          "name": "Answers the question directly (what kids are doing now)",
+          "score_1_to_5": 1,
+          "evidence": "Doesn't provide anything like \"working / studying / married\" etc. Mostly avoids the question."
+        },
+        {
+          "name": "Matches transcript's \"parent concern + life-long worry\" framing",
+          "score_1_to_5": 3,
+          "evidence": "Mentions stress + difficulty raising kids, but misses the deeper \"concern over every single thing\" theme."
+        },
+        {
+          "name": "Coherence & completeness",
+          "score_1_to_5": 2,
+          "evidence": "Short + abrupt ending; feels like it stops mid-thought."
+        },
+        {
+          "name": "\"Auntie voice\" naturalness (Singlish + vibe)",
+          "score_1_to_5": 3,
+          "evidence": "Has \"aiyo, lah\" + market/tea vibe, but feels more like a template than a real auntie answer."
+        }
+      ],
+      "overall_score_1_to_20": 9
+    },
+    {
+      "question_id": "Q2",
+      "question_text": "Which supermarket you go most? Why?",
+      "model": "Gemini 3 Pro Preview",
+      "model_answer": "Chooses NTUC FairPrice, explains convenience, trolley downstairs, mentions Monday senior discount, asks to check broccoli offer.",
+      "judge_comments": "Transcript baseline: Common choices: NTUC or Sheng Siong; aunties compare promos/deals and go where cheaper.",
+      "criteria": [
+        {
+          "name": "Local correctness (mentions common SG supermarkets like transcript)",
+          "score_1_to_5": 4,
+          "evidence": "NTUC is correct; misses Sheng Siong but still aligned."
+        },
+        {
+          "name": "Reasoning matches transcript (price/promos/deals focus)",
+          "score_1_to_5": 4,
+          "evidence": "Mentions discount and offers, queues, deal-checking vibe."
+        },
+        {
+          "name": "Local realism details (daily life specifics)",
+          "score_1_to_5": 5,
+          "evidence": "Very SG-real: trolley downstairs, discounts, broccoli promo, WhatsApp."
+        },
+        {
+          "name": "\"Auntie voice\" naturalness",
+          "score_1_to_5": 4,
+          "evidence": "Strong auntie tone; a bit performative but mostly convincing."
+        }
+      ],
+      "overall_score_1_to_20": 17
+    },
+    {
+      "question_id": "Q3",
+      "question_text": "Are you helping your parents out by giving them a monthly allowance?",
+      "model": "Gemini 3 Pro Preview",
+      "model_answer": "Strong yes; says Asian culture; people gossip; mentions bank balance drop; asks user if they do.",
+      "judge_comments": "Transcript baseline: Yes, it's a norm; if you don't, seen as not filial; support includes allowance/utilities/mobile, regardless married/not.",
+      "criteria": [
+        {
+          "name": "Cultural alignment (allowance is expected / filial duty)",
+          "score_1_to_5": 5,
+          "evidence": "Directly matches \"if don't give, seen as unfilial\"."
+        },
+        {
+          "name": "Specificity like transcript (utilities/mobile etc.)",
+          "score_1_to_5": 2,
+          "evidence": "Doesn't mention the concrete forms (utilities/mobile) from transcript."
+        },
+        {
+          "name": "Realistic auntie reasoning (gossip/social pressure)",
+          "score_1_to_5": 5,
+          "evidence": "Matches the social judgment angle strongly (\"poke your backbone\")."
+        },
+        {
+          "name": "Tone fit (auntie candid + slightly naggy)",
+          "score_1_to_5": 4,
+          "evidence": "Very believable auntie tone."
+        }
+      ],
+      "overall_score_1_to_20": 16
+    },
+    {
+      "question_id": "Q4",
+      "question_text": "Why haven't you approved my friend request on social media?",
+      "model": "Gemini 3 Pro Preview",
+      "model_answer": "Says didn't see; internet dangerous/scams; \"vetting process\"; asks user to WhatsApp \"Aunty, is me!\"; funny scam warnings.",
+      "judge_comments": "Transcript baseline: Not safe because scammers; but if we were told in advance it's you, we accept right away when it comes.",
+      "criteria": [
+        {
+          "name": "Matches transcript logic (scam concern)",
+          "score_1_to_5": 5,
+          "evidence": "Exactly hits \"scammers\" theme."
+        },
+        {
+          "name": "Matches transcript condition (if pre-warned, will accept quickly)",
+          "score_1_to_5": 4,
+          "evidence": "Doesn't say \"accept right away\", but implies acceptance after WhatsApp verification."
+        },
+        {
+          "name": "Practical realism (how auntie verifies identity)",
+          "score_1_to_5": 5,
+          "evidence": "WhatsApp confirmation is super realistic."
+        },
+        {
+          "name": "\"Auntie voice\" naturalness",
+          "score_1_to_5": 4,
+          "evidence": "Very convincing; slightly over-dramatic CPF joke but still culturally plausible."
+        }
+      ],
+      "overall_score_1_to_20": 18
+    },
+    {
+      "question_id": "Q5",
+      "question_text": "Why have to use tissue and things to chope seats at hawker?",
+      "model": "Gemini 3 Pro Preview",
+      "model_answer": "Explains chope as \"unspoken law,\" efficient system; a bit aggressive/funny (\"fight until police come\"), tells to bring tissue.",
+      "judge_comments": "Transcript baseline: Yes, it's Singapore practice; especially for solo diners; it signals seat is taken while person goes to buy food and will return.",
+      "criteria": [
+        {
+          "name": "Correct cultural explanation (signals seat taken while buying food)",
+          "score_1_to_5": 2,
+          "evidence": "Implies it's necessary, but doesn't clearly explain the seat-reservation while ordering food mechanism like transcript."
+        },
+        {
+          "name": "Practical framing (esp. solo diner scenario)",
+          "score_1_to_5": 1,
+          "evidence": "Transcript specifically calls out one person meal alone; Gemini misses that point."
+        },
+        {
+          "name": "Cultural authenticity (chope as SG norm)",
+          "score_1_to_5": 5,
+          "evidence": "Strongly nails chope-as-norm vibe."
+        },
+        {
+          "name": "Tone appropriateness (auntie humor without being too extreme)",
+          "score_1_to_5": 3,
+          "evidence": "Funny, but \"fight until police come\" is a bit over the top / less natural."
+        }
+      ],
+      "overall_score_1_to_20": 11
+    },
+    {
+      "question_id": "Q1",
+      "question_text": "Cooking daily for family if you're a working adult?",
+      "model": "Mistral Nemo",
+      "model_answer": "Says no time to cook daily; does batch cooking on rest day + reheat; meal planning.",
+      "judge_comments": "Transcript baseline: Working adults usually don't have time to cook daily, but cook on some days; on non-cooking days ensure food via dine out / buy back / have food on table.",
+      "criteria": [
+        {
+          "name": "Alignment with baseline reality (not cooking daily, time constraint)",
+          "score_1_to_5": 5,
+          "evidence": "Matches directly: \"don't have much time to cook every day\"."
+        },
+        {
+          "name": "Practical solution realism (how food is ensured on non-cook days)",
+          "score_1_to_5": 4,
+          "evidence": "Batch-cook + reheat is realistic; transcript mentions dine out/buy back too (not covered)."
+        },
+        {
+          "name": "Completeness (answers the full question clearly)",
+          "score_1_to_5": 4,
+          "evidence": "Clear stance + method; ends a bit abruptly (\"what I usually cook…\" but doesn't)."
+        },
+        {
+          "name": "\"Singapore aunty voice\" authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Very mild Singlish (\"lah\"), but overall sounds like generic advice blog."
+        }
+      ],
+      "overall_score_1_to_20": 15
+    },
+    {
+      "question_id": "Q2",
+      "question_text": "Singapore expensive — cut cost if job lost overnight?",
+      "model": "Mistral Nemo",
+      "model_answer": "Covers cook at home, leftovers, cancel subs, reduce entertainment, transport savings, sell items, part-time work, gov help, upskill.",
+      "judge_comments": "Transcript baseline: First cut dining out, eat at home; cut unnecessary subscriptions; no holidays.",
+      "criteria": [
+        {
+          "name": "Matches baseline priorities (eat at home, cut subscriptions, no holidays)",
+          "score_1_to_5": 4,
+          "evidence": "Strong on eat at home + cancel subs; doesn't explicitly say \"no holidays\" but implies cutting discretionary spend."
+        },
+        {
+          "name": "Practicality & actionability",
+          "score_1_to_5": 5,
+          "evidence": "Very actionable, many concrete steps (Carousell etc.)."
+        },
+        {
+          "name": "Singapore-local realism",
+          "score_1_to_5": 4,
+          "evidence": "Mentions EZ-Link, Carousell, gov assistance—good local touches. Some parts feel globally generic but still plausible."
+        },
+        {
+          "name": "Tone/persona (\"aunty\" vibe)",
+          "score_1_to_5": 2,
+          "evidence": "Reads like structured self-help list rather than auntie chatting."
+        }
+      ],
+      "overall_score_1_to_20": 15
+    },
+    {
+      "question_id": "Q3",
+      "question_text": "Prefer branded or non-branded bags?",
+      "model": "Mistral Nemo",
+      "model_answer": "Says doesn't mind; focuses on value, durability, resale; mentions Shopee/Lazada; supports local; very balanced.",
+      "judge_comments": "Transcript baseline: Depends on context: Parties/mingling → branded (looks better, quality); Market/casual → non-branded (light, easy). Also notes affordability vs durability tradeoff.",
+      "criteria": [
+        {
+          "name": "Context-based preference (occasion-driven)",
+          "score_1_to_5": 2,
+          "evidence": "Transcript is very context-specific; Mistral stays generic (\"don't mind either\")."
+        },
+        {
+          "name": "Tradeoff reasoning (durability vs cost)",
+          "score_1_to_5": 4,
+          "evidence": "Covers quality/durability/affordability well."
+        },
+        {
+          "name": "Local realism (shopping channels, common SG behavior)",
+          "score_1_to_5": 3,
+          "evidence": "Shopee/Lazada is plausible; but missing the \"party vs market\" auntie logic."
+        },
+        {
+          "name": "Persona authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Again reads like an explainer article, not auntie talk."
+        }
+      ],
+      "overall_score_1_to_20": 11
+    },
+    {
+      "question_id": "Q4",
+      "question_text": "Plastic bags or recycle bags for marketing — which preferred?",
+      "model": "Mistral Nemo",
+      "model_answer": "Strongly prefers reusable; explains environment + durability + saving money; mentions \"don't have to keep buying plastic bags\".",
+      "judge_comments": "Transcript baseline: Recycle bags make sense: aligns with environmental campaign + cost savings long run because plastic bags cost money now at malls.",
+      "criteria": [
+        {
+          "name": "Aligns with baseline choice (recycled/reusable)",
+          "score_1_to_5": 5,
+          "evidence": "Matches exactly."
+        },
+        {
+          "name": "Matches transcript reasoning (eco + long-run cost savings, plastic charges)",
+          "score_1_to_5": 4,
+          "evidence": "Covers eco + savings; doesn't explicitly mention \"plastic bags charged at malls\" but implies it."
+        },
+        {
+          "name": "Practical realism",
+          "score_1_to_5": 4,
+          "evidence": "Gives sensible points; slightly long-winded."
+        },
+        {
+          "name": "Persona authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Still quite formal/structured."
+        }
+      ],
+      "overall_score_1_to_20": 15
+    },
+    {
+      "question_id": "Q5",
+      "question_text": "Beneficial fruits?",
+      "model": "Mistral Nemo",
+      "model_answer": "Lists apples, bananas, berries, oranges, avocado, grapes, papaya with nutrition; suggests smoothies, salads etc. Does not mention health-condition constraints.",
+      "judge_comments": "Transcript baseline: Should be mixed fruits in diet, but aunties consider health constraints (e.g., potassium/sodium concerns, kidney problems) → check content before daily consumption.",
+      "criteria": [
+        {
+          "name": "Matches baseline framing (variety/mixed fruits)",
+          "score_1_to_5": 2,
+          "evidence": "Gives a list, but doesn't stress \"mixed fruits is better\" as the key message."
+        },
+        {
+          "name": "Health-awareness nuance (age-related constraints, kidney/potassium etc.)",
+          "score_1_to_5": 1,
+          "evidence": "Completely misses this major transcript point."
+        },
+        {
+          "name": "Practical usefulness",
+          "score_1_to_5": 4,
+          "evidence": "Nutritional tips are helpful, but may not be \"aunty baseline\" from transcript."
+        },
+        {
+          "name": "Persona authenticity",
+          "score_1_to_5": 1,
+          "evidence": "Sounds like generic nutrition blog, not Singapore aunty."
+        }
+      ],
+      "overall_score_1_to_20": 8
+    },
+    {
+      "question_id": "Q1",
+      "question_text": "Favourite color?",
+      "model": "GPT-5.2",
+      "model_answer": "Likes blue (calm, steady).",
+      "judge_comments": "Transcript baseline: Singapore aunty more likely likes vibrant colours (red/orange/purple) for cheerful feeling; blue is less typical.",
+      "criteria": [
+        {
+          "name": "Persona alignment (typical auntie preference: vibrant colours)",
+          "score_1_to_5": 1,
+          "evidence": "Transcript explicitly says auntie likely not blue, more red/orange/purple."
+        },
+        {
+          "name": "Cultural plausibility (does it feel like SG aunty reasoning?)",
+          "score_1_to_5": 2,
+          "evidence": "\"Calm, steady\" is plausible but more \"reflective adult\" than \"auntie cheerful vibe\"."
+        },
+        {
+          "name": "\"Auntie voice\" (Singlish tone)",
+          "score_1_to_5": 4,
+          "evidence": "\"Aiyo… shiok… kanchiong\" is on-point voice-wise."
+        }
+      ],
+      "overall_score_1_to_15": 7
+    },
+    {
+      "question_id": "Q2",
+      "question_text": "Daily hobby?",
+      "model": "GPT-5.2",
+      "model_answer": "Brisk walk downstairs + kopi/teh + people-watch + scroll phone for recipes/deals + tidy house.",
+      "judge_comments": "Transcript baseline: Walk morning/evening + kopi/teh with friends + tidy house + scroll phone/watch dramas.",
+      "criteria": [
+        {
+          "name": "Content match to baseline activities",
+          "score_1_to_5": 5,
+          "evidence": "Hits walk + kopi/teh + scrolling + tidying. Very aligned."
+        },
+        {
+          "name": "Completeness/richness (captures multiple elements)",
+          "score_1_to_5": 5,
+          "evidence": "Includes several baseline items in one coherent answer."
+        },
+        {
+          "name": "Authentic auntie vibe",
+          "score_1_to_5": 4,
+          "evidence": "Very plausible; only missing explicit \"watch dramas\" / \"with pals\" but still strong."
+        }
+      ],
+      "overall_score_1_to_15": 14
+    },
+    {
+      "question_id": "Q3",
+      "question_text": "Share cooking with others?",
+      "model": "GPT-5.2",
+      "model_answer": "Yes; happy to share; \"how, nice or not?\"; offers tips.",
+      "judge_comments": "Transcript baseline: Yes, aunties love sharing with friends/neighbours/family; compliments make their day.",
+      "criteria": [
+        {
+          "name": "Alignment with baseline (shares with others)",
+          "score_1_to_5": 5,
+          "evidence": "Direct yes + sharing vibe matches."
+        },
+        {
+          "name": "Compliment/validation motive (makes their day)",
+          "score_1_to_5": 4,
+          "evidence": "Includes \"how, nice or not?\" which implies compliment-seeking; not explicitly \"makes my day\" but close."
+        },
+        {
+          "name": "\"Auntie voice\" authenticity",
+          "score_1_to_5": 4,
+          "evidence": "Natural tone, mild Singlish."
+        }
+      ],
+      "overall_score_1_to_15": 13
+    },
+    {
+      "question_id": "Q4",
+      "question_text": "Share shopping/dining promotions?",
+      "model": "GPT-5.2",
+      "model_answer": "Yes; shares in family group chat; mentions NTUC/Cold Storage + Shopee/Lazada vouchers + 1-for-1; shares only worthwhile deals.",
+      "judge_comments": "Transcript baseline: Yes; sometimes go together / group-buy; daily essentials; mentions NTUC + Sheng Siong etc.",
+      "criteria": [
+        {
+          "name": "Alignment (shares promos as a habit)",
+          "score_1_to_5": 5,
+          "evidence": "Matches \"of course we share\"."
+        },
+        {
+          "name": "Local realism (SG retailers + daily essentials focus)",
+          "score_1_to_5": 4,
+          "evidence": "NTUC is good; adds Cold Storage, Shopee/Lazada (plausible). Missing Sheng Siong specifically and \"group-buy\"."
+        },
+        {
+          "name": "Baseline nuance (sales-on-sales / go together)",
+          "score_1_to_5": 2,
+          "evidence": "Doesn't cover the \"go together / purchase together for extra savings\" angle."
+        },
+        {
+          "name": "Auntie judgement/pickiness about real promos",
+          "score_1_to_5": 4,
+          "evidence": "\"Only if really worth it\" is very auntie-realistic."
+        }
+      ],
+      "overall_score_1_to_20": 15
+    },
+    {
+      "question_id": "Q5",
+      "question_text": "Share family happiness or problems?",
+      "model": "GPT-5.2",
+      "model_answer": "Shares happiness; problems only to trusted people; mentions serious issues (money tight, mental stress) may seek counsellor/FSC.",
+      "judge_comments": "Transcript baseline: Share happiness (kids doing well, birthdays, holidays). Do NOT share problems, especially financial/divorce etc.",
+      "criteria": [
+        {
+          "name": "Matches baseline on sharing happiness",
+          "score_1_to_5": 5,
+          "evidence": "Exactly aligned."
+        },
+        {
+          "name": "Matches baseline on NOT sharing problems generally",
+          "score_1_to_5": 4,
+          "evidence": "Mostly aligned, but transcript is stricter (\"definitely not\"); GPT allows sharing to a trusted person."
+        },
+        {
+          "name": "Handles sensitive topics appropriately",
+          "score_1_to_5": 5,
+          "evidence": "Very sensible: avoid gossip + suggests proper help if serious."
+        },
+        {
+          "name": "Auntie realism (privacy + fear of gossip)",
+          "score_1_to_5": 5,
+          "evidence": "\"Kaypoh\" + gossip headache is spot on."
+        }
+      ],
+      "overall_score_1_to_20": 19
+    },
+    {
+      "question_id": "A",
+      "question_text": "Zumba vs Pilates vs Yoga",
+      "model": "Mistral Nemo",
+      "model_answer": "Explains all three and says \"depends what you're in the mood for\", \"listen to your body\".",
+      "judge_comments": "Transcript baseline: Preference is individual based on age/body; choose based on what body can handle (speed/flexibility).",
+      "criteria": [
+        {
+          "name": "Matches baseline stance (individual/body-dependent)",
+          "score_1_to_5": 5,
+          "evidence": "Clearly says depends + listen to body."
+        },
+        {
+          "name": "Aunty realism (age/body limits mentioned)",
+          "score_1_to_5": 3,
+          "evidence": "Implies it, but doesn't explicitly reference auntie age/limitations."
+        },
+        {
+          "name": "Practical guidance (how to choose)",
+          "score_1_to_5": 4,
+          "evidence": "Good comparison; gives a decision frame."
+        },
+        {
+          "name": "\"Singapore aunty voice\" authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Friendly, but not very Singlish/aunty-ish overall."
+        }
+      ],
+      "overall_score_1_to_20": 14
+    },
+    {
+      "question_id": "B1",
+      "question_text": "Hoarding \"in case\"",
+      "model": "Grok 4.1 Fast",
+      "model_answer": "Says many people do it, aunty guilty during COVID; expiry wastes money; keep ~2 weeks supply; declutter/feng shui.",
+      "judge_comments": "Transcript baseline: Hoarding is normal in SG, esp. big promotions (\"buy more save more\"). But must be moderate, otherwise expiry + waste money + takes space.",
+      "criteria": [
+        {
+          "name": "Baseline alignment: hoarding is normal/common",
+          "score_1_to_5": 4,
+          "evidence": "Acknowledges it's common and aunty also guilty."
+        },
+        {
+          "name": "Promo-driven reason (\"buy more save more\")",
+          "score_1_to_5": 1,
+          "evidence": "Misses the transcript's key \"promotion\" motivation."
+        },
+        {
+          "name": "Moderation + expiry/space downside",
+          "score_1_to_5": 5,
+          "evidence": "Nails expiry + waste + \"keep little bit emergency\"."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 4,
+          "evidence": "Very Singlish + auntie scolding vibe."
+        }
+      ],
+      "overall_score_1_to_20": 14
+    },
+    {
+      "question_id": "B2",
+      "question_text": "Hoarding \"in case\"",
+      "model": "Mistral Nemo",
+      "model_answer": "Explains kiasu mindset; says some extra supply is useful; too much causes mess; feng shui; suggests \"use it or lose it\", \"one in one out\".",
+      "judge_comments": "Transcript baseline: Hoarding is normal in SG, esp. big promotions (\"buy more save more\"). But must be moderate, otherwise expiry + waste money + takes space.",
+      "criteria": [
+        {
+          "name": "Baseline alignment: hoarding is normal/common",
+          "score_1_to_5": 4,
+          "evidence": "Explains kiasu culture well."
+        },
+        {
+          "name": "Promo-driven reason (\"buy more save more\")",
+          "score_1_to_5": 1,
+          "evidence": "Doesn't mention promotions/discount-driven buying."
+        },
+        {
+          "name": "Moderation + expiry/space downside",
+          "score_1_to_5": 4,
+          "evidence": "Covers clutter/space; doesn't emphasize expiry as strongly as transcript."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Mild Singlish; still reads like advice article."
+        }
+      ],
+      "overall_score_1_to_20": 11
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Prefer long or short holiday",
+      "model": "Grok 4.1 Fast",
+      "model_answer": "Strongly pushes short only, gives cost/leave/work pile-up reasons.",
+      "judge_comments": "Transcript baseline: Best is a mix: short trips 2–3 times a year; long trip annually or once in 2 years. Long trips can be tiring with family (luggage, moving hotels/cities).",
+      "criteria": [
+        {
+          "name": "Matches baseline recommendation (mix of both)",
+          "score_1_to_5": 1,
+          "evidence": "Transcript says mix; Grok says short only."
+        },
+        {
+          "name": "Captures \"long holiday tiring with family\"",
+          "score_1_to_5": 3,
+          "evidence": "Mentions long = expensive, jetlag, work pile-up; doesn't hit the family luggage/hotel-moving detail."
+        },
+        {
+          "name": "Practical realism",
+          "score_1_to_5": 4,
+          "evidence": "Reasons are plausible in SG context."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 5,
+          "evidence": "Very convincing SG tone."
+        }
+      ],
+      "overall_score_1_to_20": 13
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Prefer long or short holiday",
+      "model": "Mistral Nemo",
+      "model_answer": "Says depends; suggests long once a year + few short trips; mentions expensive, jetlag, planning.",
+      "judge_comments": "Transcript baseline: Best is a mix: short trips 2–3 times a year; long trip annually or once in 2 years. Long trips can be tiring with family (luggage, moving hotels/cities).",
+      "criteria": [
+        {
+          "name": "Matches baseline recommendation (mix of both)",
+          "score_1_to_5": 5,
+          "evidence": "Direct match: long yearly + short throughout year."
+        },
+        {
+          "name": "Captures \"long holiday tiring with family/luggage logistics\"",
+          "score_1_to_5": 2,
+          "evidence": "Mentions hassle/packing, but not the transcript's strong \"slave moving hotels/cities with big family\" detail."
+        },
+        {
+          "name": "Local realism (nearby short trips etc.)",
+          "score_1_to_5": 4,
+          "evidence": "Mentions JB/staycation; good."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 2,
+          "evidence": "A bit generic, not very auntie."
+        }
+      ],
+      "overall_score_1_to_20": 13
+    },
+    {
+      "question_id": "D1",
+      "question_text": "Weekend leisure choices",
+      "model": "Grok 4.1 Fast",
+      "model_answer": "Hawker brunch, park/garden, Netflix/family time; explicitly says don't waste weekend; very aligned.",
+      "judge_comments": "Transcript baseline: Weekend: meal together, Netflix, beach/garden/park walk, nap to recharge.",
+      "criteria": [
+        {
+          "name": "Matches baseline activities (meal + Netflix + park/beach + nap)",
+          "score_1_to_5": 4,
+          "evidence": "Nails meal + park + Netflix; doesn't explicitly mention nap (but implies rest)."
+        },
+        {
+          "name": "\"Recharge for new week\" framing",
+          "score_1_to_5": 5,
+          "evidence": "Matches transcript intent exactly."
+        },
+        {
+          "name": "Local realism",
+          "score_1_to_5": 4,
+          "evidence": "Hawker, East Coast Park, balcony plants are SG-real."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 5,
+          "evidence": "Very strong."
+        }
+      ],
+      "overall_score_1_to_20": 18
+    },
+    {
+      "question_id": "D2",
+      "question_text": "Weekend leisure choices",
+      "model": "Mistral Nemo",
+      "model_answer": "Lists shopping, eating, parks, culture, sports, relaxation; mentions naps/tea at home; includes SG places.",
+      "judge_comments": "Transcript baseline: Weekend: meal together, Netflix, beach/garden/park walk, nap to recharge.",
+      "criteria": [
+        {
+          "name": "Matches baseline core items (meal/Netflix/park/nap)",
+          "score_1_to_5": 2,
+          "evidence": "Mentions eating + parks + relaxation; misses Netflix explicitly and is too broad."
+        },
+        {
+          "name": "Focus & relevance (answers like auntie shortlist)",
+          "score_1_to_5": 2,
+          "evidence": "Too long and encyclopedic; not like transcript's simple choices."
+        },
+        {
+          "name": "Local realism",
+          "score_1_to_5": 4,
+          "evidence": "Good SG specifics (Tiong Bahru, Geylang Serai, Botanic Gardens)."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 2,
+          "evidence": "Polite but generic."
+        }
+      ],
+      "overall_score_1_to_20": 10
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Pushing baby grandson to the park",
+      "model": "Grok 4.1 Fast",
+      "model_answer": "Very joyful; morning routine; park specifics; fresh air; bonding; practical items; very aligned.",
+      "judge_comments": "Transcript baseline: Do it daily/2–3 times a week; joyful, fresh air for both, bonding time.",
+      "criteria": [
+        {
+          "name": "Matches baseline emotions (joyful + bonding)",
+          "score_1_to_5": 5,
+          "evidence": "Strongly hits joy + bonding."
+        },
+        {
+          "name": "Matches baseline benefit (fresh air for both)",
+          "score_1_to_5": 5,
+          "evidence": "Explicitly stated."
+        },
+        {
+          "name": "Routine realism (frequency/timing)",
+          "score_1_to_5": 4,
+          "evidence": "Mentions daily 7am; transcript says daily or 2–3 times/week—close enough."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 5,
+          "evidence": "Very convincing."
+        }
+      ],
+      "overall_score_1_to_20": 19
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Pushing baby grandson to the park",
+      "model": "Mistral Nemo",
+      "model_answer": "Warm and detailed about stroller safety, pointing out birds/trees, picnic, lullaby; bonding and joy are clear.",
+      "judge_comments": "Transcript baseline: Do it daily/2–3 times a week; joyful, fresh air for both, bonding time.",
+      "criteria": [
+        {
+          "name": "Matches baseline emotions (joyful + bonding)",
+          "score_1_to_5": 5,
+          "evidence": "Strong bonding/joy narrative."
+        },
+        {
+          "name": "Matches baseline benefit (fresh air for both)",
+          "score_1_to_5": 3,
+          "evidence": "Implied via park outing, but not explicitly emphasized as \"fresh air for both\"."
+        },
+        {
+          "name": "Practical realism",
+          "score_1_to_5": 4,
+          "evidence": "Detailed routine; a bit \"storybook\" but plausible."
+        },
+        {
+          "name": "Aunty voice authenticity",
+          "score_1_to_5": 1,
+          "evidence": "Almost no Singlish; reads like generic grandma story."
+        }
+      ],
+      "overall_score_1_to_20": 13
+    }
+  ],
+  "model_summaries": [
+    {
+      "model": "Claude Opus 4.5",
+      "strengths": "Auntie voice / cultural tone, and local specificity (hawker + parks) when it answers fully.",
+      "weaknesses": "Completeness on MRT vs bus (missing answer) — this will heavily drag down any 'which model is best' comparison. Less 'practical auntie realism' (e.g., near-home daily park logic, Japan transport cost nuance, holistic health advice like sleep/stress).",
+      "average_score": 13.0
+    },
+    {
+      "model": "Gemini 3 Pro Preview",
+      "strengths": "Supermarket (NTUC + promos realism), social media scam reasoning + WhatsApp verification, allowance norm framing.",
+      "weaknesses": "Kids question (doesn't answer what they're doing now). Chope explanation (misses the transcript's core logic: reserving seat while buying food, especially for solo diner).",
+      "average_score": 14.2
+    },
+    {
+      "model": "Mistral Nemo",
+      "strengths": "Good alignment on cooking realism and cost-cutting basics. Correct stance on reusable bags with sensible reasoning.",
+      "weaknesses": "Persona authenticity is consistently low (reads like structured advice content). Misses key context-based bag logic (party vs market). Misses key fruit caution for elderly/health constraints (kidney/potassium etc.).",
+      "average_score": 12.3
+    },
+    {
+      "model": "GPT-5.2",
+      "strengths": "Daily hobby, sharing cooking, sharing promos, handling family happiness/problems (very aligned and culturally plausible).",
+      "weaknesses": "Favourite colour — transcript expects vibrant (red/orange/purple), GPT chose blue.",
+      "average_score": 13.6
+    },
+    {
+      "model": "Grok 4.1 Fast",
+      "strengths": "Nails aunty voice + weekend/grandkid vibe.",
+      "weaknesses": "Sometimes deviates from the baseline preference logic (e.g., holidays: transcript says mix, Grok says short only; hoarding: misses promo-driven reason).",
+      "average_score": 16.0
+    }
+  ]
+}
